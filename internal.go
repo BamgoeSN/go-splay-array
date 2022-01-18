@@ -124,3 +124,13 @@ func (s *Splay) gather(l, r int) (*node, int) {
 	s.root = origin
 	return target, 2
 }
+
+func (s *Splay) toSliceHelper(arr *[]interface{}, curr *node) {
+	if curr.l != nil {
+		s.toSliceHelper(arr, curr.l)
+	}
+	*arr = append(*arr, curr.data)
+	if curr.r != nil {
+		s.toSliceHelper(arr, curr.r)
+	}
+}

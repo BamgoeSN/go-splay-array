@@ -26,13 +26,3 @@ func (s *Splay) CopyToSlice() []interface{} {
 	s.toSliceHelper(&arr, s.root)
 	return arr
 }
-
-func (s *Splay) toSliceHelper(arr *[]interface{}, curr *node) {
-	if curr.l != nil {
-		s.toSliceHelper(arr, curr.l)
-	}
-	*arr = append(*arr, curr.data)
-	if curr.r != nil {
-		s.toSliceHelper(arr, curr.r)
-	}
-}
