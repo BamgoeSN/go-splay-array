@@ -36,3 +36,11 @@ func (s *Splay) InsertValue(value interface{}, at int) {
 
 func (s *Splay) InsertValueFront(value interface{}) { s.InsertValue(value, 0) }
 func (s *Splay) InsertValueRear(value interface{})  { s.InsertValue(value, s.Len()) }
+
+func (s *Splay) GetValue(idx int) interface{} {
+	ptr := s.getKthNode(idx)
+	if ptr == nil {
+		panic("Invalid index")
+	}
+	return ptr.data
+}
