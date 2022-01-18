@@ -1,5 +1,16 @@
 package splay
 
+func (s *Splay) Flip(l, r int) {
+	if l > r || l < 0 || r > s.Len() {
+		panic("Invalid range")
+	}
+	if l == r {
+		return
+	}
+	ptr, _ := s.gather(l, r)
+	ptr.flip = !ptr.flip
+}
+
 func (s *Splay) TakeOutRange(l, r int) *Splay {
 	if l > r || l < 0 || r > s.Len() {
 		panic("Invalid range")
