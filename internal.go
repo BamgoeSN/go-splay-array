@@ -135,3 +135,16 @@ func (s *Splay) toSliceHelper(arr *[]interface{}, curr *node) {
 		s.toSliceHelper(arr, curr.r)
 	}
 }
+
+func (s *Splay) copySplayHelper(from, to *node) {
+	if from.l != nil {
+		x := from.l
+		to.l = &node{x.data, x.cnt, nil, nil, nil, x.flip}
+		s.copySplayHelper(x, to.l)
+	}
+	if from.r != nil {
+		x := from.r
+		to.r = &node{x.data, x.cnt, nil, nil, nil, x.flip}
+		s.copySplayHelper(x, to.r)
+	}
+}

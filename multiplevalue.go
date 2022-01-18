@@ -11,6 +11,19 @@ func (s *Splay) Flip(l, r int) {
 	ptr.flip = !ptr.flip
 }
 
+func (s *Splay) CopyRange(l, r int) *Splay {
+	if l > r || l < 0 || r > s.Len() {
+		panic("Invalid range")
+	}
+	if l == r {
+		return EmptySplay()
+	}
+	ptr, _ := s.gather(l, r)
+	part := &Splay{&node{ptr.data, ptr.cnt, nil, nil, nil, ptr.flip}}
+	s.copySplayHelper(ptr, part.root)
+	return part
+}
+
 func (s *Splay) CopyRangeToSlice(l, r int) []interface{} {
 	if l > r || l < 0 || r > s.Len() {
 		panic("Invalid range")
