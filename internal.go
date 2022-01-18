@@ -56,8 +56,10 @@ func (s *Splay) getRightMost() *node {
 		return nil
 	}
 	ptr := s.root
+	ptr.push()
 	for ptr.r != nil {
 		ptr = ptr.r
+		ptr.push()
 	}
 	return ptr
 }
