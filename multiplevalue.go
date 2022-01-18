@@ -11,6 +11,19 @@ func (s *Splay) Flip(l, r int) {
 	ptr.flip = !ptr.flip
 }
 
+func (s *Splay) CopyRangeToSlice(l, r int) []interface{} {
+	if l > r || l < 0 || r > s.Len() {
+		panic("Invalid range")
+	}
+	if l == r {
+		return nil
+	}
+	ptr, _ := s.gather(l, r)
+	arr := make([]interface{}, 0, ptr.cnt)
+	s.toSliceHelper(&arr, ptr)
+	return arr
+}
+
 func (s *Splay) TakeOutRange(l, r int) *Splay {
 	if l > r || l < 0 || r > s.Len() {
 		panic("Invalid range")
