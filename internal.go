@@ -126,6 +126,7 @@ func (s *Splay) gather(l, r int) (*node, int) {
 }
 
 func (s *Splay) toSliceHelper(arr *[]interface{}, curr *node) {
+	curr.push()
 	if curr.l != nil {
 		s.toSliceHelper(arr, curr.l)
 	}
