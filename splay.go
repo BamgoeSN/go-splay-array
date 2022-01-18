@@ -4,6 +4,7 @@ type Splay struct {
 	root *node
 }
 
+// Len returns the number of elements in the splay array.
 func (s *Splay) Len() int {
 	if s.root == nil {
 		return 0
