@@ -51,6 +51,17 @@ func (s *Splay) splay(x *node) {
 	}
 }
 
+func (s *Splay) getRightMost() *node {
+	if s.root == nil {
+		return nil
+	}
+	ptr := s.root
+	for ptr.r != nil {
+		ptr = ptr.r
+	}
+	return ptr
+}
+
 func (s *Splay) getKthNode(k int) *node {
 	if k >= s.Len() || k < 0 || s.Len() == 0 {
 		return nil
